@@ -84,6 +84,14 @@ or usign the sample video
 ```
 $ python Pose_estimation.py --video videos/sample_video-mp4
 ```
+Note: you can use the other models
+```
+$ python Pose_estimation.py --model mobilenet_thin
+$ python Pose_estimation.py --model mobilenet_v2_large
+$ python Pose_estimation.py --model mobilenet_v2_small
+$ python Pose_estimation.py --model cmu
+```
+
 
 
 
