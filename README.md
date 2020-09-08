@@ -49,6 +49,7 @@ note that you can change the enviroment's name, for example if your computer doe
 ```
 $ cd tf_pose/pafprocess
 $ swig -python -c++ pafprocess.i && python setup.py build_ext --inplace
+$ cd ../..
 ```
 
 ### 4. Models 
