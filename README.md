@@ -68,7 +68,7 @@ CMU's model graphs are too large for git, so ildoonet uploaded them on an extern
 ```
 $ cd models/graph/cmu
 $ bash download.sh
-$ cd ../..
+$ cd ../../..
 ```
 
 ### 5. Real time WebCam or video path
