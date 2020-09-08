@@ -42,6 +42,15 @@ if __name__ == '__main__':
     cam = cv2.VideoCapture(args.video)
     ret_val, image = cam.read()
 
+    #Save video
+    width = int(cam.get(cv2.CAP_PROP_FRAME_WIDTH))
+    height = int(cam.get(cv2.CAP_PROP_FRAME_HEIGHT))
+    fps = int(cam.get(cv2.CAP_PROP_FPS))
+    if type(args.video) == int:
+        out = cv2.VideoWriter('output/output_live.mp4', cv2.VideoWriter_fourcc(*'mp4v'), fps, (width, height))
+    else:
+        out = cv2.VideoWriter('output/output_video.mp4', cv2.VideoWriter_fourcc(*'mp4v'), fps, (width, height))
+
     while True:
         ret_val, image = cam.read()
 
@@ -54,7 +63,9 @@ if __name__ == '__main__':
                     (0, 255, 0), 2)
         cv2.imshow('tf-pose-estimation result', image)
         fps_time = time.time()
+        out.write(image)
         if cv2.waitKey(1) == 27:
             break
 
     cv2.destroyAllWindows()
+    out.release()
