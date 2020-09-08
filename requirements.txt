@@ -1,0 +1,17 @@
+opencv-python
+tensorflow-gpu
+tensorflow
+lxml
+tqdm
+numba
+argparse
+dill
+fire
+psutil
+requests
+scikit-image
+scipy
+slidingwindow
+git+https://github.com/adrianc-a/tf-slim.git@remove_contrib
+pycocotools
+-e .
