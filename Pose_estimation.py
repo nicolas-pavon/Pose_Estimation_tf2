@@ -27,7 +27,8 @@ if __name__ == '__main__':
 
     parser.add_argument('--model', type=str, default='mobilenet_thin', help='cmu / mobilenet_thin / mobilenet_v2_large / mobilenet_v2_small')
     
-    
+    parser.add_argument('--show', type=bool, default=False)
+
     '''
     parser.add_argument('--tensorrt', type=str, default="False",
                         help='for tensorrt process.')
@@ -36,9 +37,9 @@ if __name__ == '__main__':
 
     w, h = model_wh(args.resize)
     if w > 0 and h > 0:
-        e = TfPoseEstimator(get_graph_path(args.model), target_size=(w, h), trt_bool=False)
+        e = TfPoseEstimator(get_graph_path(args.model), target_size=(w, h), trt_bool=False, show=args.show)
     else:
-        e = TfPoseEstimator(get_graph_path(args.model), target_size=(432, 368), trt_bool=False)
+        e = TfPoseEstimator(get_graph_path(args.model), target_size=(432, 368), trt_bool=False, show=args.show)
     cam = cv2.VideoCapture(args.video)
     ret_val, image = cam.read()
 

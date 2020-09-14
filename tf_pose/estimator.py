@@ -300,7 +300,7 @@ class PoseEstimator:
 class TfPoseEstimator:
     # TODO : multi-scale
 
-    def __init__(self, graph_path, target_size=(320, 240), tf_config=None, trt_bool=False):
+    def __init__(self, graph_path, target_size=(320, 240), tf_config=None, trt_bool=False, show=False):
         self.target_size = target_size
 
         # load graph
@@ -327,8 +327,9 @@ class TfPoseEstimator:
         tf.import_graph_def(graph_def, name='TfPoseEstimator')
         self.persistent_sess = tf.compat.v1.Session(graph=self.graph, config=tf_config)
         
-        for ts in [n.name for n in tf.compat.v1.get_default_graph().as_graph_def().node]:
-            print(ts)
+        if show == True:
+            for ts in [n.name for n in tf.compat.v1.get_default_graph().as_graph_def().node]:
+                print(ts)
         
 
         self.tensor_image = self.graph.get_tensor_by_name('TfPoseEstimator/image:0')
