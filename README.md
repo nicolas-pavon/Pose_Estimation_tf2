@@ -93,7 +93,55 @@ $ python Pose_estimation.py --model mobilenet_v2_small
 $ python Pose_estimation.py --model cmu
 ```
 
+## Windows
+Open an Anaconda Prompt window, then put:
+### 1. Clone repository
 
+``` 
+> git clone https://github.com/nicolas-pavon/Pose_Estimation_tf2.git
+```
 
+### 2. Create a new conda enviorment.
+
+#### to create the environment(conda):
+after clone the repository put:
+```
+> cd Pose_Estimation_tf2
+> conda create env -f conda-env.yml
+> conda activate tf2-gpu
+```
+
+### 3. Build c++ library for post processing.
+```
+$ cd tf_pose/pafprocess
+$ swig -python -c++ pafprocess.i && python setup.py build_ext --inplace
+$ cd ../..
+```
+**Note**: Yoy must have a C++ compiler (Could be Visual Studio https://visualstudio.microsoft.com)
+
+### 4. Models 
+
+#### Download Tensorflow Graph File(pb file)
+
+```
+> cd models/graph/cmu
+> wget  http://download2182.mediafire.com/n6hreqlnatsg/qlzzr20mpocnpa3/graph_opt.pb
+> cd ../../..
+```
+
+### 5. Real time WebCam or video path
+
+test by running your pc's camera or a video:
+```
+> python Pose_estimation.py
+```
+if you want to use the CMU original model:
+```
+> python Pose_estimation.py --model cmu --resize 656x368
+```
+or usign the sample video
+```
+> python Pose_estimation.py --video videos/sample_video-mp4
+```
 
 
